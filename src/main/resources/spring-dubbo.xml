@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd" >
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="${dubbo.application}"/> 
+	<!--  需要注册服务-->
+ 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry}" />
+	<!-- 配置注册中心 /-->
+	<!--<dubbo:registry address="N/A" />-->
+ 	
+ 	<!-- 用dubbo协议在20880端口暴露服务 direct:所有消息都不派发到线程池，全部在IO线程上直接执行 -->
+	<dubbo:protocol name="dubbo" port="${provider.protocol}"  accesslog="${provider.accesslog}" />
+	
+	<!-- 声明需要暴露的服务接口  retries:关闭写入方法的重试-->
+	<dubbo:service interface="com.ylz.activemq.service.ProducerQueueService" ref="ProducerQueueService" retries="${provider.retries}" timeout="${provider.timeout}" version="${provider.version}" />
+
+</beans>
