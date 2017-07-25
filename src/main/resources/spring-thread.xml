@@ -39,7 +39,7 @@
 			-->
 	</bean>
 
-	<bean id="ThreadPoolMonitorService" class="com.ylz.activemq.thread.monitor.impl.DefaultThreadPoolMonitor">
+	<bean id="ThreadPoolMonitorService" class="com.ylz.thread.monitor.impl.DefaultThreadPoolMonitor">
 		<!-- 间隔多久在控制台打印一次线程池信息 -->
 		<property name="monitoringPeriod" value="60"></property>
 		<property name="executor" ref="threadPoolTaskExecutor"></property>

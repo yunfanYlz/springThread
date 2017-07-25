@@ -1,6 +1,7 @@
 package com.ylz.thread.monitor;
 
-import com.ylz.thread.ServiceLocator;
+import com.ylz.thread.monitor.bean.SingleThreadDTO;
+
 //import com.ylz.thread.service.ProducerQueueService;
 
 /**
@@ -8,7 +9,9 @@ import com.ylz.thread.ServiceLocator;
  *
  */
 public class ExportProcessThread implements Runnable{
-
+	
+	
+	private SingleThreadDTO dto;
 /*    
 	private ProducerQueueService producerQueueService;
 	
@@ -16,14 +19,17 @@ public class ExportProcessThread implements Runnable{
 		producerQueueService = (ProducerQueueService) ServiceLocator.getBean("ProducerQueueService");
 	}*/
 	
-    public ExportProcessThread(){
+    public ExportProcessThread(SingleThreadDTO dto){
+    	this.dto = dto;
     }
     
     @Override
     public void run() {
         try
         {
-        	System.out.println("启动一条导出线程");
+        	System.out.println("-----------------");
+        	System.out.println("threadPool 提供线程启动");
+        	System.out.println(dto.getText());
         	Thread.sleep(5 * 1000);
         	//导出完毕   发往 activeMQ 
 //        	producerQueueService.sendMessage("这是一条来自新线程的消息");

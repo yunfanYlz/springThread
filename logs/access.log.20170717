@@ -1,0 +1,2 @@
+[2017-07-17 16:22:21] 192.168.199.1:59922 -> 192.168.199.1:20881 - com.ylz.activemq.service.ProducerQueueService:0.0.1 sendMessage(java.lang.String) ["这是一条来自新线程的消息"]
+[2017-07-17 16:23:45] 192.168.199.1:60450 -> 192.168.199.1:20881 - com.ylz.activemq.service.ProducerQueueService:0.0.1 sendMessage(java.lang.String) ["这是一条来自新线程的消息"]

@@ -28,6 +28,6 @@
 	<dubbo:protocol name="dubbo" port="${provider.protocol}"  accesslog="${provider.accesslog}" />
 	
 	<!-- 声明需要暴露的服务接口  retries:关闭写入方法的重试-->
-	<dubbo:service interface="com.ylz.activemq.service.ProducerQueueService" ref="ProducerQueueService" retries="${provider.retries}" timeout="${provider.timeout}" version="${provider.version}" />
+	<dubbo:service interface="com.ylz.thread.monitor.ThreadProcess" ref="ThreadProcess" retries="${provider.retries}" timeout="${provider.timeout}" version="${provider.version}" />
 
 </beans>

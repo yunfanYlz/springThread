@@ -2,9 +2,8 @@ package com.ylz.thread;
 
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import com.ylz.thread.monitor.ExportProcessThread;
+import com.ylz.thread.monitor.ThreadProcess;
+import com.ylz.thread.monitor.bean.SingleThreadDTO;
 
 public class ThreadTest {
 
@@ -16,10 +15,11 @@ public class ThreadTest {
 					new String[] { "spring-config.xml" });
 			context.start();
 			
-			ThreadPoolTaskExecutor threadExecutor = (ThreadPoolTaskExecutor) context.getBean("threadPoolTaskExecutor");
-			
-			ExportProcessThread thread = new ExportProcessThread();
-			threadExecutor.execute(thread);
+			ThreadProcess threadpool = (ThreadProcess) context.getBean("ThreadProcess");
+
+			SingleThreadDTO dto = new SingleThreadDTO();
+			dto.setText("test");
+			threadpool.putInThreadPool(dto);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

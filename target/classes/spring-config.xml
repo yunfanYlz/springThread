@@ -11,14 +11,14 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
        ">
 
-   	<bean id="serviceLocator" class="com.ylz.provider.ServiceLocator" scope="singleton" />
+   	<bean id="serviceLocator" class="com.ylz.thread.ServiceLocator" scope="singleton" />
 
 
 	<!-- 扫描注解Bean -->
-	<context:component-scan base-package="com.ylz.activemq.dubbo"/>
+	<context:component-scan base-package="com.ylz.thread.monitor"/>
 
 	<!-- 加载配置文件 -->
-	<bean id="propertyConfigurer" class="com.ylz.activemq.CustomConfig">
+	<bean id="propertyConfigurer" class="com.ylz.thread.CustomConfig">
 		<property name="locations">
 			<list>
 				<value>classpath:config.properties</value>
@@ -27,7 +27,7 @@
 	</bean>
 
 	<!-- 导入服务配置 -->
-	<import resource="classpath:spring-active-pool.xml" />
+<!-- 	<import resource="classpath:spring-active-pool.xml" /> -->
 	<import resource="classpath:spring-dubbo.xml" />
 	<import resource="classpath:spring-thread.xml" />
 	
