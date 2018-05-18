@@ -17,10 +17,12 @@ public class ThreadTest {
 			
 			ThreadProcess threadpool = (ThreadProcess) context.getBean("ThreadProcess");
 
-			SingleThreadDTO dto = new SingleThreadDTO();
-			dto.setText("test");
-			threadpool.putInThreadPool(dto);
-			
+			for(int i = 0; i < 100; i++){
+				SingleThreadDTO dto = new SingleThreadDTO();
+				dto.setText("test" + i);
+				threadpool.putInThreadPool(dto);
+			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("error-------------");
